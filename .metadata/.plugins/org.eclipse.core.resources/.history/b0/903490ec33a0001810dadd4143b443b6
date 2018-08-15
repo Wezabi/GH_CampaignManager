@@ -1,0 +1,120 @@
+package com.gloomhaven.campaign.events;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class EventManagerEventPanel extends JPanel implements ActionListener
+{
+    private Image img;
+    private int w;
+    private int h;
+    private static final Dimension EVENT_MANAGER_EVENT_PANEL_DIMENSION = new Dimension(200, 600);
+    private static final Dimension EVENT_MANAGER_EVENT_BUTTON_PANEL_DIMENSION = new Dimension(200, 1);
+    private static final Dimension EVENT_MANAGER_EVENT_IMAGE_PANEL_DIMENSION = new Dimension(200, 600);
+    private static final Dimension CAMPAIGN_BUTTON_SIZE_PREFFERED = new Dimension(100, 50);
+    private static final Dimension CAMPAIGN_BUTTON_SIZE_MIN = new Dimension(50, 25);
+    private static final Dimension CAMPAIGN_BUTTON_SIZE_MAX = new Dimension(200, 100);
+    private JPanel choosePanel = new JPanel();
+    private JLabel imageLabel = new JLabel();
+    private JButton contineButton = new JButton("Continue");
+    private JButton keepButton = new JButton("Keep Event");
+    private JButton removeButton = new JButton("Remove Event");
+    
+    public EventManagerEventPanel()
+    {
+    	this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+    	this.setPreferredSize(EVENT_MANAGER_EVENT_PANEL_DIMENSION);
+    	this.formatButtons();
+    	choosePanel.add(keepButton);
+    	choosePanel.add(removeButton);
+    	this.add(choosePanel, BorderLayout.CENTER);
+    	this.add(imageLabel, BorderLayout.CENTER);
+    	choosePanel.setPreferredSize(EVENT_MANAGER_EVENT_BUTTON_PANEL_DIMENSION);
+    	imageLabel.setPreferredSize(EVENT_MANAGER_EVENT_IMAGE_PANEL_DIMENSION);
+    }
+    
+    private void formatButtons()
+    {
+		
+    	contineButton.setBackground(Color.red);
+    	contineButton.setForeground(Color.black);
+    	contineButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
+    	contineButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
+    	contineButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
+    	
+    	keepButton.setBackground(Color.red);
+    	keepButton.setForeground(Color.black);
+    	keepButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
+    	keepButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
+    	keepButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
+    	
+    	removeButton.setBackground(Color.red);
+    	removeButton.setForeground(Color.black);
+    	removeButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
+    	removeButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
+    	removeButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g)
+	{
+	    super.paintComponent(g);
+	    g.setColor(Color.RED);
+	    g.drawImage(img, -w, -h, this);
+	    repaint();
+	}
+	
+	//so our panel is the correct size when pack() is called on Jframe
+	@Override
+	public Dimension getPreferredSize() 
+	{
+	    return new Dimension(400, 700);
+	}
+	
+	public void setImage(Image img)
+	{
+	    this.img = img;
+	}
+	
+	public void setHeight(int h)
+	{
+	    this.h = h;
+	}
+	
+	public void setWidth(int w)
+	{
+	    this.w = w;
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) 
+	{
+		Object button = e.getSource();
+	    if(button instanceof JButton)
+	    {
+	    	String text = ((JButton) button).getText();
+	    	switch(text)
+	    	{
+	    		case "Keep Event":
+	    			EventManager.getInstance().setUserStrInput("k");
+	    			break;
+	    		case "Remove Event":
+	    			EventManager.getInstance().setUserStrInput("r");
+	    			break;
+	    		default:
+	    			System.out.println("Wes you spelled something wrong in EventManagerEventPanel");
+	    			return;
+	    	}
+	    }
+	}
+}

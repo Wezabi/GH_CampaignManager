@@ -1,0 +1,9 @@
+package com.gloomhaven.components.item;
+
+public class Item
+{
+	private String description;
+	private int max;
+	private boolean isRefreshable;
+	private int itemNumber;
+}
