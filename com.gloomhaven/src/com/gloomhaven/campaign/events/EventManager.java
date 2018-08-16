@@ -10,8 +10,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 import com.gloomhaven.campaign.CampaignManager;
-import com.gloomhaven.campaign.CsvFileReader;
-import com.gloomhaven.campaign.CsvFileWriter;
 import com.gloomhaven.run.Main;
 
 public class EventManager
@@ -371,7 +369,7 @@ public class EventManager
     
     public boolean readSaveData()
     {
-        CsvFileReader reader = new CsvFileReader();
+        EventCsvFileReader reader = new EventCsvFileReader();
         cityEventDeck = reader.readCsvFileCityEvent(eventCSV);
         roadEventDeck = reader.readCsvFileRoadEvent(eventCSV);
         return (roadEventDeck.isEmpty() || cityEventDeck.isEmpty() ? false : true);
@@ -379,11 +377,11 @@ public class EventManager
     
     public void writeSaveData()
     {
-        CsvFileWriter.writeCsvFileAllEvents(eventCSV, cityEventDeck, roadEventDeck);
+        EventCsvFileWriter.writeCsvFileAllEvents(eventCSV, cityEventDeck, roadEventDeck);
     }
     
     public void clearSaveData()
     {
-        CsvFileWriter.writeCsvFileAllEvents(eventCSV, null, null);
+        EventCsvFileWriter.writeCsvFileAllEvents(eventCSV, null, null);
     }
 }

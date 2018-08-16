@@ -28,7 +28,7 @@ public class CampaignPanel extends JPanel implements ActionListener
     private static final Dimension CAMPAIGN_BUTTON_SIZE_MAX = new Dimension(100, 50);
     private JPanel buttonPane = new JPanel();
     private JButton eventManagerButton = new JButton("Run Event Manager");
-    private JButton runActiveSimulationButton = new JButton("Run the standard sim");
+    private JButton runActiveSimulationButton = new JButton("Run City Manager");
     private JButton exitButton = new JButton("Exit");
     
     public CampaignPanel()
@@ -58,7 +58,6 @@ public class CampaignPanel extends JPanel implements ActionListener
     	runActiveSimulationButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
     	runActiveSimulationButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
     	runActiveSimulationButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	runActiveSimulationButton.setEnabled(false);
     	runActiveSimulationButton.addActionListener(this);
 
     	
@@ -112,11 +111,12 @@ public class CampaignPanel extends JPanel implements ActionListener
 		    	switch(text)
 		    	{
 		    		case "Run Event Manager":
-		    			System.out.println("run event manager button pressed");
 		    			CampaignManager.getInstance().setUserInput(1);
 		    			break;
+		    		case "Run City Manager":
+		    			CampaignManager.getInstance().setUserInput(2);
+		    			break;
 		    		case "Exit":
-		    			System.out.println("exit campaign manager button pressed");
 		    			CampaignManager.getInstance().setUserInput(3);
 		    			return;
 		    		default:

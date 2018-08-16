@@ -60,7 +60,11 @@ public class CampaignManager
 	    	        userInput = -1;
 	                break;
 	            case 2:
-	                System.out.println("Proceeding to standard run");
+	            	campaignFrame.remove(campaignPanel);
+	            	cityManager.runCityManager();
+	            	campaignFrame.add(campaignPanel);
+	            	campaignPanel.setVisible(false);
+	            	campaignPanel.setVisibile(true);
 	    	        userInput = -1;
 	                break;
 	            case 3:
