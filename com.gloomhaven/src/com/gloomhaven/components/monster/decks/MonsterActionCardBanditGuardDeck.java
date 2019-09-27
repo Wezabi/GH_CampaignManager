@@ -24,12 +24,9 @@ import static com.gloomhaven.constants.DefaultDecks.GUARD_ACTION_DECK;
 public class MonsterActionCardBanditGuardDeck extends MonsterActionCardDeck
 {
     private static final MonsterActionCardBanditGuardDeck INSTANCE = new MonsterActionCardBanditGuardDeck();
+    
     /**
      * Constructs a new {@link MonsterActionCardBanditGuardDeck}.
-     * @param name
-     *          the name of the deck's owner
-     * @param Cards
-     *          the list of monster action cards
      */
     private MonsterActionCardBanditGuardDeck()
     {

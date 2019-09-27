@@ -23,8 +23,8 @@ public class EventManager
     private static final Dimension EVENT_MANAGER_EVENT_DRAWN_MENU_DIMENSION = new Dimension(410, 700);
     private static final Dimension EVENT_MANAGER_EVENT_ADD_MENU_DIMENSION = new Dimension(400, 200);
 
-    private LinkedList<RoadEvent> roadEventDeck = new LinkedList<RoadEvent>();
-    private LinkedList<CityEvent> cityEventDeck = new LinkedList<CityEvent>();
+    private LinkedList<RoadEvent> roadEventDeck = new LinkedList<>();
+    private LinkedList<CityEvent> cityEventDeck = new LinkedList<>();
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     private String eventCSV;
     private File CEF_FILE;

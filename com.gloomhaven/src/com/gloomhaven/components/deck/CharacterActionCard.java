@@ -1,6 +1,6 @@
 package com.gloomhaven.components.deck;
 
-public class CharacterActionCard
+public class CharacterActionCard implements AbstractCard
 {
     private CharacterAction top;
     private CharacterAction bottom;
@@ -17,4 +17,10 @@ public class CharacterActionCard
     {
         return initiative;
     }
+
+	@Override
+	public boolean isShuffle()
+	{
+		return false;
+	}
 }

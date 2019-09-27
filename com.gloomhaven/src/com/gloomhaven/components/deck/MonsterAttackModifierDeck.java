@@ -1,12 +1,9 @@
 package com.gloomhaven.components.deck;
 
-import java.util.List;
-import java.util.Stack;
-
 import static com.gloomhaven.constants.DefaultDecks.DEFAULT_ATTACK_MOD_CARD_DECK;
 
 @SuppressWarnings("javadoc")
-public class MonsterAttackModifierDeck extends AttackModifierDeck
+public class MonsterAttackModifierDeck extends AttackModifierCardDeck
 {
     private static final MonsterAttackModifierDeck INSTANCE = new MonsterAttackModifierDeck();
     

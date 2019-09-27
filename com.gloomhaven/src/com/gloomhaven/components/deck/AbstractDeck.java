@@ -1,6 +1,5 @@
 package com.gloomhaven.components.deck;
 
-import java.util.Collections;
 import java.util.Stack;
 import java.util.List;
 
@@ -13,13 +12,13 @@ import java.util.List;
  * </p>
  *
  * @author Wes Huhman
- * @param <T> 
  */
-public abstract class AbstractDeck<T>
+public abstract class AbstractDeck<T extends AbstractCard>
 {
     protected String deckName;
     protected Stack<T> activeDeck;
     protected Stack<T> discardDeck;
+    
     AbstractDeck(String name)
     {
         this(name, null);
@@ -29,18 +28,17 @@ public abstract class AbstractDeck<T>
      * Constructs a new {@link AbstractDeck}.
      * @param name
      *          the name of the deck
-     * @param Cards
+     * @param cards
      *          the list of cards initialized to active deck
      */
-    public AbstractDeck(String name, List<T> Cards)
+    public AbstractDeck(String name, List<T> cards)
     {
         this.deckName = name;
-        this.activeDeck = new Stack<T>();
-        this.discardDeck = new Stack<T>();
-        if(Cards != null)
+        this.activeDeck = new Stack<>();
+        this.discardDeck = new Stack<>();
+        if(cards != null)
         {
-            this.addCards(Cards);
-            Collections.shuffle(this.activeDeck);
+            this.addCards(cards);
         }
     }
     
@@ -60,50 +58,46 @@ public abstract class AbstractDeck<T>
      * @param card
      *          The card to be added
      */
-    final public void addCard(T card)
+    public void addCard(T card)
     {
         this.activeDeck.push(card);
-        return;
     }
+    
     /**
      * Adds the list of AttackModifierCards to the deck.  Shuffles.
      * 
      * @param cardList
      *          The list of cards to be added
      */
-    final public void addCards(List<T> cardList)
+    public void addCards(List<T> cardList)
     {
         for(T card : cardList)
         {
             addCard(card);
         }
-        return;
     }
+    
+    /**
+     * Pushes discard to active.
+     */
+    public void addDiscardToActive()
+    {
+    	while(!(discardDeck.isEmpty()))
+    	{
+    		activeDeck.push(discardDeck.pop());
+    	}		
+    }
+    
     /**
      * Draw a card from the active deck.
      * 
      * @return the card drawn
      */
-    public T draw()
-    {
-        if(activeDeck.isEmpty())
-            shuffle();
-        T drawn = activeDeck.pop();
-        discardDeck.push(drawn);
-        return drawn;
-    }
+    abstract AbstractCard draw();
+
     
     /**
-     * Pushes discard to active and shuffles.
+     * Shuffles the active deck.
      */
-    final public void shuffle()
-    {
-        System.out.println(deckName + " is being shuffled."); 
-        while(!(discardDeck.isEmpty()))
-        {
-            activeDeck.push(discardDeck.pop());
-        }
-        Collections.shuffle(activeDeck);
-        return;
-    }
+    abstract void shuffle();
 }

@@ -6,8 +6,9 @@ import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.Map;
 
-import com.gloomhaven.components.monster.AbstractMonster;
-import com.gloomhaven.components.monster.AbstractMonsterGroup;
+import com.gloomhaven.components.monster.Monster;
+import com.gloomhaven.components.monster.MonsterGroup;
+import com.gloomhaven.components.monster.Monster;
 import com.gloomhaven.campaign.scenario.characters.CharacterParty;
 import com.gloomhaven.campaign.scenario.monsters.MonsterParty;
 import com.gloomhaven.components.character.Character;
@@ -31,7 +32,7 @@ public class ScenarioRound
     {
         System.out.println("Round " + roundNumber + " begins.");
         elementBoard.roundPass();
-        for(AbstractMonsterGroup<AbstractMonster> monsterGroup : monsterParty.getMonsters())
+        for(MonsterGroup<Monster> monsterGroup : monsterParty.getMonsters())
         {
             monsterGroup.draw();
         }
@@ -50,9 +51,9 @@ public class ScenarioRound
     
     private void setInitiativeOrder()
     {
-        for(AbstractMonsterGroup<AbstractMonster> monsterGroup : monsterParty.getMonsters())
+        for(MonsterGroup<Monster> monsterGroup : monsterParty.getMonsters())
         {
-            initiativeOrder.put(monsterGroup.getName(), monsterGroup.getActionCard().getInitiative());
+            initiativeOrder.put(monsterGroup.getName(), monsterGroup.getActiveMonsterActionCard().getInitiative());
         }
         for(Character character : characterParty.getCharacters())
         {

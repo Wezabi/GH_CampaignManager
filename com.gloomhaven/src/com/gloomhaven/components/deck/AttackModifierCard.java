@@ -4,14 +4,16 @@ import com.gloomhaven.constants.Element;
 import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
 
+import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNull;
+
 @SuppressWarnings("javadoc")
-public class AttackModifierCard
+public class AttackModifierCard implements AbstractCard
 {
     private boolean isRemoved = false;
     private boolean isRolling = false;
     private boolean isShuffle = false;
     private Element createElement = Element.NONE;
-    private Modifier value;
+    private Modifier modifier;
     private Status status = Status.NONE;
     
     private AttackModifierCard(Builder builder)
@@ -21,12 +23,12 @@ public class AttackModifierCard
         this.isRolling = builder.isRolling;
         this.isRemoved = builder.isRemoved;
         this.status = builder.status;
-        this.value = builder.value;
+        this.modifier = builder.modifier;
     }
     
-    public Modifier getValue()
+    public Modifier getModifier()
     {
-        return value;
+        return modifier;
     }
     
     public Element getCreateElement()
@@ -60,12 +62,12 @@ public class AttackModifierCard
         private boolean isRolling;
         private boolean isShuffle;
         private Element createElement;
-        private Modifier value;
+        private Modifier modifier;
         private Status status;
         
         public Builder(Modifier value)
         {
-            this.value = value;
+            this.modifier = rejectIfNull(value, "value");
         }
         
         public Builder createElement(Element createElement)

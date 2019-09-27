@@ -2,7 +2,6 @@ package com.gloomhaven.components.deck;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 /**
  * <p>
  * TODO
@@ -13,19 +12,19 @@ import java.util.Stack;
  *
  * @author Wes Huhman
  */
-public class AttackModifierDeck extends AbstractDeck<AttackModifierCard>
+public class AttackModifierCardDeck extends AbstractDeck<AttackModifierCard>
 {
     /**
-     * Constructs a new {@link AttackModifierDeck}.
+     * Constructs a new {@link AttackModifierCardDeck}.
      * 
      * @param name
      *          the name of the deck
-     * @param Cards
+     * @param cards
      *          the list of cards
      */
-    public AttackModifierDeck(String name, List<AttackModifierCard> Cards)
+    public AttackModifierCardDeck(String name, List<AttackModifierCard> cards)
     {
-        super(name, Cards);
+        super(name, cards);
     }
     
     /**
@@ -36,15 +35,21 @@ public class AttackModifierDeck extends AbstractDeck<AttackModifierCard>
         return activeDeck.size();
     }
     
-    @Override
     public AttackModifierCard draw()
     {
-        if(activeDeck.isEmpty())
-            shuffle();
         AttackModifierCard drawn = activeDeck.pop();
         discardDeck.push(drawn);
-        if(drawn.isShuffle())
-            shuffle();
+        if(activeDeck.isEmpty())
+        {
+        	addDiscardToActive();
+        	shuffle();
+        }
         return drawn;
+    }
+
+    public void shuffle()
+    {
+    	System.out.println(deckName + " is being shuffled."); 
+    	Collections.shuffle(activeDeck);
     }
 }

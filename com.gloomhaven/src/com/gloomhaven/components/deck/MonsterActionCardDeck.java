@@ -22,12 +22,12 @@ public class MonsterActionCardDeck extends AbstractDeck<MonsterActionCard>
      * Constructs a new {@link MonsterActionCardDeck}.
      * @param name
      *          the name of the deck's monster
-     * @param Cards
+     * @param cards
      *          the monster action cards to be added
      */
-    public MonsterActionCardDeck(String name, List<MonsterActionCard> Cards)
+    public MonsterActionCardDeck(String name, List<MonsterActionCard> cards)
     {
-        super(name, Cards);
+        super(name, cards);
     }
 
     /**
@@ -41,12 +41,20 @@ public class MonsterActionCardDeck extends AbstractDeck<MonsterActionCard>
     @Override
     public MonsterActionCard draw()
     {
-        if(activeDeck.isEmpty())
-            shuffle();
-        MonsterActionCard drawn = activeDeck.pop();
-        discardDeck.push(drawn);
-        if(drawn.isShuffle())
-            shuffle();
-        return drawn;
+        activeCard  = activeDeck.pop();
+        discardDeck.push(activeCard);
+        if(activeCard.isShuffle() || activeDeck.isEmpty())
+        {
+        	addDiscardToActive();
+        	shuffle();
+        }
+        return getActiveCard();
     }
+
+	@Override
+	public void shuffle() 
+	{
+		System.out.println(deckName + " is being shuffled."); 
+        Collections.shuffle(activeDeck);
+	}
 }

@@ -1,9 +1,14 @@
 package com.gloomhaven.campaign.scenario.monsters;
 
-import com.gloomhaven.components.monster.MonsterGroupBanditGuard;;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.gloomhaven.components.monster.MonsterGroup;;
 
 public class MonsterParty2 extends MonsterParty
 {
+    private List<MonsterGroup> monsters = new ArrayList<>();
+
     public MonsterParty2(int scenarioNumber, int scenarioLevel, int playerCount)
     {
         super(scenarioNumber, scenarioLevel, playerCount);
@@ -14,4 +19,10 @@ public class MonsterParty2 extends MonsterParty
     {
         // TODO: Scenario two monsters
     }
+
+	@Override
+	public List<MonsterGroup> getMonsters() 
+	{
+		return monsters;
+	}
 }

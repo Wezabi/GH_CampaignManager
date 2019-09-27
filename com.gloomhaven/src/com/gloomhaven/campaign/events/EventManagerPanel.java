@@ -61,70 +61,25 @@ public class EventManagerPanel extends JPanel implements ActionListener
     
     private void formatButtons()
     {
-    	drawCityEventButton.setBackground(Color.red);
-    	drawCityEventButton.setForeground(Color.black);
-    	drawCityEventButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	drawCityEventButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	drawCityEventButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	drawCityEventButton.addActionListener(this);
-
-    	
-    	drawRoadEventButton.setBackground(Color.red);
-    	drawRoadEventButton.setForeground(Color.black);
-    	drawRoadEventButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	drawRoadEventButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	drawRoadEventButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	drawRoadEventButton.addActionListener(this);
-    	
-    	addCityEventButton.setBackground(Color.red);
-    	addCityEventButton.setForeground(Color.black);
-    	addCityEventButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	addCityEventButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	addCityEventButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	addCityEventButton.addActionListener(this);
-    	
-    	addRoadEventButton.setBackground(Color.red);
-    	addRoadEventButton.setForeground(Color.black);
-    	addRoadEventButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	addRoadEventButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	addRoadEventButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	addRoadEventButton.addActionListener(this);
-    	
-    	shuffleCityEventsButton.setBackground(Color.red);
-    	shuffleCityEventsButton.setForeground(Color.black);
-    	shuffleCityEventsButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	shuffleCityEventsButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	shuffleCityEventsButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	shuffleCityEventsButton.addActionListener(this);
-    	
-    	shuffleRoadEventsButton.setBackground(Color.red);
-    	shuffleRoadEventsButton.setForeground(Color.black);
-    	shuffleRoadEventsButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	shuffleRoadEventsButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	shuffleRoadEventsButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	shuffleRoadEventsButton.addActionListener(this);
-    	
-    	reinitializeDecksButton.setBackground(Color.red);
-    	reinitializeDecksButton.setForeground(Color.black);
-    	reinitializeDecksButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	reinitializeDecksButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	reinitializeDecksButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	reinitializeDecksButton.addActionListener(this);
-    	
-    	saveButton.setBackground(Color.red);
-    	saveButton.setForeground(Color.black);
-    	saveButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	saveButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	saveButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	saveButton.addActionListener(this);
-    	
-    	exitButton.setBackground(Color.red);
-    	exitButton.setForeground(Color.black);
-    	exitButton.setMinimumSize(CAMPAIGN_BUTTON_SIZE_MIN);
-    	exitButton.setPreferredSize(CAMPAIGN_BUTTON_SIZE_PREFFERED);
-    	exitButton.setMaximumSize(CAMPAIGN_BUTTON_SIZE_MAX);
-    	exitButton.addActionListener(this);
+    	formatButton(drawCityEventButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(drawRoadEventButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(addCityEventButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(addRoadEventButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(shuffleCityEventsButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(shuffleRoadEventsButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(reinitializeDecksButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(saveButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
+    	formatButton(exitButton, Color.red, Color.black, CAMPAIGN_BUTTON_SIZE_MIN, CAMPAIGN_BUTTON_SIZE_PREFFERED, CAMPAIGN_BUTTON_SIZE_MAX);
     }
+
+	private void formatButton(JButton toFormat, Color backgroundColor, Color foreGroundColor, Dimension minSize, Dimension preferredSize, Dimension maxiumumSize) {
+		toFormat.setBackground(backgroundColor);
+		toFormat.setForeground(foreGroundColor);
+		toFormat.setMinimumSize(minSize);
+		toFormat.setPreferredSize(preferredSize);
+		toFormat.setMaximumSize(maxiumumSize);
+		toFormat.addActionListener(this);
+	}
     
 
     //so our panel is the correct size when pack() is called on Jframe
