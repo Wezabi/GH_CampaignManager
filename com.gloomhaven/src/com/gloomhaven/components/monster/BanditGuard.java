@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.gloomhaven.components.deck.MonsterAttackModifierDeck;
 import com.gloomhaven.components.monster.decks.MonsterActionCardBanditGuardDeck;
 import com.gloomhaven.components.monster.stats.BanditGuardStats;
 import com.gloomhaven.constants.Status;
@@ -28,6 +29,6 @@ public class BanditGuard extends Monster
      */
     public BanditGuard(int level, boolean isElite, int id)
     {
-    	super(MonsterActionCardBanditGuardDeck.getInstance(), new BanditGuardStats().calculateBaseStats(level, isElite), "Bandit Guard", isElite, id);
+    	super(new BanditGuardStats().calculateBaseStats(level, isElite), "Bandit Guard", isElite, id, MonsterAttackModifierDeck.getInstance());
     }
 }

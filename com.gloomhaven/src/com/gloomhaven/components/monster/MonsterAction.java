@@ -39,7 +39,7 @@ public class MonsterAction {
 		return attackMod;
 	}
     
-    public Element getConsuerElement()
+    public Element getConsumeElement()
     {
     	return consumeElement;
     }
@@ -168,6 +168,7 @@ public class MonsterAction {
         	this.target = target;
         	return this;
         }
+        
         public MonsterAction build()
         {
             return new MonsterAction(this);

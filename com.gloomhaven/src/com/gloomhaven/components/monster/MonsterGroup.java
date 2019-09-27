@@ -6,6 +6,7 @@ import java.util.List;
 import com.gloomhaven.components.deck.MonsterActionCard;
 import com.gloomhaven.components.deck.MonsterActionCardDeck;
 import com.gloomhaven.components.deck.MonsterAttackModifierDeck;
+import com.gloomhaven.components.monster.decks.MonsterActionCardBanditGuardDeck;
 import com.gloomhaven.components.monster.stats.Stats;
 import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
@@ -18,16 +19,6 @@ public abstract class MonsterGroup<T extends Monster> {
    private List<Status> innateEffects = null; 
    
    /**
-    * True if monster is flying.
-    */
-   private boolean isFlying = false;
-   
-   /**
-    * True if retaliates at ranged.
-    */
-   private int retaliateRange = 1;
-   
-   /**
     * Monster's level.
     */
    private int level = 0;
@@ -35,21 +26,22 @@ public abstract class MonsterGroup<T extends Monster> {
    /**
     * Monster's name
     */
-   public String name = ""; //$NON-NLS-1$
+   private String name; //$NON-NLS-1$
    
-   private Stats stats;
-   
+   private MonsterActionCardDeck actionCardDeck;
+
    private Monster[] monsters;
    private int spawnMax;
    protected MonsterActionCard activeMonsterActionCard;
    private int spawnCurrent;
    
-   public MonsterGroup(int spawnMax, String name, Hashtable<String, String> hashTable, int scenarioNumber, int scenarioLevel, int playerCount)
+   public MonsterGroup(int spawnMax, String name, Hashtable<String, String> hashTable, int scenarioNumber, int scenarioLevel, int playerCount, MonsterActionCardDeck actionCardDeck)
    {
        this.spawnMax = spawnMax;
        this.name = name;
        this.level = scenarioLevel;
        this.monsters = new Monster[spawnMax];
+       this.actionCardDeck = actionCardDeck;
        decodeTableSpawns(calcTableSpawns(hashTable, scenarioNumber, playerCount));
    }
    
@@ -86,10 +78,10 @@ public abstract class MonsterGroup<T extends Monster> {
    
    protected void spawnMonster(Monster monster)
    {
-       if(monster == null)
-    	   return;
-       monsters[spawnCurrent++] = monster;
-       return;
+       if(monster != null)
+       {
+    	   monsters[spawnCurrent++] = monster;
+       }
    }
    
    private String calcTableSpawns(Hashtable<String, String> hashTable, int scenarioNumber, int playerCount)
@@ -166,7 +158,11 @@ public abstract class MonsterGroup<T extends Monster> {
            }
        }
    }
-   abstract void createMonster(int level, boolean isElite, int id);
    
-   public abstract void draw();
+   public void draw()
+   {
+	   activeMonsterActionCard = actionCardDeck.draw();
+   }
+   
+   public abstract void createMonster(int level, boolean isElite, int id);
 }

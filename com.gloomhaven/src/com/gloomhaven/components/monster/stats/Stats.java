@@ -121,6 +121,7 @@ public class Stats {
 			this.innateStatuses = innateStatuses;
 			return this;
 		}
+		
 		public Stats build()
 		{
 			return new Stats(this);

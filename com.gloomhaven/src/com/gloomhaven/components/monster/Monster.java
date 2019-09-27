@@ -3,6 +3,7 @@ package com.gloomhaven.components.monster;
 import java.util.Hashtable;
 import java.util.List;
 
+import com.gloomhaven.components.deck.AttackModifierCardDeck;
 import com.gloomhaven.components.deck.MonsterActionCard;
 import com.gloomhaven.components.deck.MonsterActionCardDeck;
 import com.gloomhaven.components.deck.MonsterAttackModifierDeck;
@@ -25,30 +26,20 @@ public abstract class Monster
 {
 	private int ID; //$NON-NLS-1$
 	private String name; //$NON-NLS-1$
-	protected Stats stats;
+	private Stats stats;
     private int currentHealth = 0;
     private boolean isElite = false;
     private List<Status> statuses = null; 
+    private AttackModifierCardDeck monsterAttackModifierDeck; 
     
-    /**
-     * Monster's action card deck.
-     */
-    private MonsterActionCardDeck monsterActionCardDeck;
-    
-    /**
-     * Monster's attack modifier deck.
-     */
-    private static MonsterAttackModifierDeck ATTACK_MODIFIER_DECK = MonsterAttackModifierDeck.getInstance();
-
-    
-    public Monster(MonsterActionCardDeck monsterActionCardDeck, Stats stats, String name, boolean isElite, int ID)
+    public Monster(Stats stats, String name, boolean isElite, int ID, AttackModifierCardDeck monsterAttackModifierDeck)
     {
-    	this.monsterActionCardDeck = monsterActionCardDeck;
     	this.name = name;
     	this.ID = ID;
-    	this.currentHealth = stats.getBaseHealth();
     	this.isElite = isElite;
     	this.stats = stats;
+    	this.currentHealth = stats.getBaseHealth();
+    	this.monsterAttackModifierDeck = monsterAttackModifierDeck;
     }
     
     /**
@@ -67,10 +58,18 @@ public abstract class Monster
         return name;
     }
     
+    /**
+     * @return the monster's current health
+     */
+    public final int getCurrentHealth()
+    {
+    	return currentHealth;
+    }
+    
 	/**
      * Decreases the monster health by {@code damage}.
      */
-    public void takeDamage(int damage)
+    public boolean takeDamage(int damage)
     {
     	int shield = stats.getBaseShield();
     	// Add action shield
@@ -81,26 +80,34 @@ public abstract class Monster
             System.out.print("'s shield negates " + shield + " damage. " + name);
         System.out.println(" takes " + String.valueOf(trueDamage));
         if(currentHealth<1)
+        {
         	System.out.print(" and dies!");
+        	return true;
+        }
+        return false;
     }
     
     /**
-     * Calculates the damage dealt.
+     * Calculates the damage and statuses dealt.
      * 
      * @return the calculated damage
      */
     public int dealDamage(MonsterAction monsterAction)
     {
-        Modifier mod = ATTACK_MODIFIER_DECK.draw().getModifier();
+    	//TODO: Status check on monsterAction
+    	//TODO: Check monsterAction has a valid attackmod
+        Modifier mod = monsterAttackModifierDeck.draw().getModifier();
         int modValue = mod.getValue();
         int baseAttack = stats.getBaseAttack();
-        System.out.print(name + " deals base damage of " + String.valueOf(baseAttack + ", ")); //$NON-NLS-1$ //$NON-NLS-2$
-        System.out.print(monsterAction.getAttackMod().getValue() + " from the monster ability card, and "); //$NON-NLS-1$
-        switch(mod)
+        String attackModString = monsterAction.getAttackMod().getName();
+        int attackModValue = monsterAction.getAttackMod().getValue();
+        System.out.print(name + " deals base damage of " + String.valueOf(baseAttack ) + ", "); //$NON-NLS-1$ //$NON-NLS-2$
+		System.out.print(attackModString + " from the monster ability card, and "); //$NON-NLS-1$
+		switch(mod)
         {
             case X2:
-                System.out.println(" draws a CRIT for " + String.valueOf(baseAttack*2 + monsterAction.getAttackMod().getValue()) + " total damage!"); //$NON-NLS-1$ //$NON-NLS-2$
-                return baseAttack * 2 + monsterAction.getAttackMod().getValue();
+                System.out.println(" draws a CRIT for " + String.valueOf(baseAttack*2 + attackModValue) + " total damage!"); //$NON-NLS-1$ //$NON-NLS-2$
+                return baseAttack * 2 + attackModValue;
             case MISS: 
                 System.out.println(" draws a MISS for zero damage!"); //$NON-NLS-1$
                 return 0;
@@ -108,8 +115,8 @@ public abstract class Monster
                 System.out.println(" Error, monster deck shouldn't be drawing this ever."); //$NON-NLS-1$
                 return 0;
             default:
-                System.out.println(" draws a " + String.valueOf(modValue) + " for " + String.valueOf(baseAttack + modValue) + " total damage."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                return baseAttack + modValue + monsterAction.getAttackMod().getValue();
+                System.out.println(" draws a " + String.valueOf(modValue) + " for " + String.valueOf(baseAttack + modValue + attackModValue) + " total damage."); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                return baseAttack + modValue + attackModValue;
         }
     }
 }

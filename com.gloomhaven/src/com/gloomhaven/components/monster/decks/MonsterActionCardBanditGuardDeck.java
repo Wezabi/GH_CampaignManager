@@ -42,5 +42,4 @@ public class MonsterActionCardBanditGuardDeck extends MonsterActionCardDeck
     {
         return INSTANCE;
     }
-    
 }

@@ -41,6 +41,15 @@ public final class DefaultDecks
         new AttackModifierCard.Builder(Modifier.POS_1).build(),
         new AttackModifierCard.Builder(Modifier.POS_2).build()
 	);
+    
+    public static final List<AttackModifierCard> MOCK_ATTACK_MOD_CARD_DECK = Arrays.asList(
+            new AttackModifierCard.Builder(Modifier.ZERO).build(),
+            new AttackModifierCard.Builder(Modifier.ZERO).build(),
+            new AttackModifierCard.Builder(Modifier.ZERO).build(),
+            new AttackModifierCard.Builder(Modifier.ZERO).build(),
+            new AttackModifierCard.Builder(Modifier.ZERO).build(),
+            new AttackModifierCard.Builder(Modifier.ZERO).build()
+    	);
         
     public static final List<MonsterActionCard> GUARD_ACTION_DECK = Arrays.asList(
 		new MonsterActionCard.Builder(15, Arrays.asList(
@@ -67,4 +76,8 @@ public final class DefaultDecks
 		.build(),
 		new MonsterActionCard.Builder(70, Actions.INCREASED_ATTACK).build()
 	);
+    
+    public static final List<MonsterActionCard> MOCK_MONSTER_ACTION_CARD_DECK = Arrays.asList(
+    		new MonsterActionCard.Builder(50, Actions.DEFAULT_ATTACK).build()
+    	);
 }

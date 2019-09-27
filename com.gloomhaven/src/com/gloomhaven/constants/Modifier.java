@@ -10,7 +10,7 @@ public enum Modifier
     POS_3 (3, "adds three"),
     X2 (-3, "adds critial"),
     MISS (-4, "misses all"),
-    NONE (-5, "has no");
+    NONE (-5, "has no modifier");
     
     private final int value;
     private final String name;
