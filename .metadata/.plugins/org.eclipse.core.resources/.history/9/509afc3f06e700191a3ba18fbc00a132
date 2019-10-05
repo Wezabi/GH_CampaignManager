@@ -11,10 +11,10 @@ import com.gloomhaven.constants.Status;
 import static com.gloomhaven.constants.DefaultDecks.GUARD_ACTION_DECK;
 /**
  * <p>
- * A bandit guard monster action deck.
+ * TODO
  * </p>
  * <p>
- * Copyright &copy 2018
+ * Copyright &copy 2018 Cerner Corporation
  * </p>
  *
  * @author Wes Huhman
@@ -42,4 +42,5 @@ public class MonsterActionCardBanditGuardDeck extends MonsterActionCardDeck
     {
         return INSTANCE;
     }
+    
 }
