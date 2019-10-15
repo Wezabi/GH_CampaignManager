@@ -1,17 +1,12 @@
 package com.gloomhaven.components.monster.decks;
 
-import java.util.Arrays;
-import java.util.List;
-
-import com.gloomhaven.components.deck.MonsterActionCard;
 import com.gloomhaven.components.deck.MonsterActionCardDeck;
-import com.gloomhaven.constants.Modifier;
-import com.gloomhaven.constants.Status;
 
 import static com.gloomhaven.constants.DefaultDecks.GUARD_ACTION_DECK;
+
 /**
  * <p>
- * A bandit guard monster action deck.
+ * The singleton instance of a {@link MonsterActionCardBanditGuardDeck}.
  * </p>
  * <p>
  * Copyright &copy 2018
@@ -19,8 +14,6 @@ import static com.gloomhaven.constants.DefaultDecks.GUARD_ACTION_DECK;
  *
  * @author Wes Huhman
  */
-
-
 public class MonsterActionCardBanditGuardDeck extends MonsterActionCardDeck
 {
     private static final MonsterActionCardBanditGuardDeck INSTANCE = new MonsterActionCardBanditGuardDeck();

@@ -1,14 +1,14 @@
 package com.gloomhaven.components.deck;
 
-import java.util.Stack;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * <p>
- * A deck of cards.
+ * An abstract deck of cards class.
  * </p>
  * <p>
- * Gloomhaven
+ * Copyright &copy 2018
  * </p>
  *
  * @author Wes Huhman
@@ -19,6 +19,12 @@ public abstract class AbstractDeck<T extends AbstractCard>
     protected Stack<T> activeDeck;
     protected Stack<T> discardDeck;
     
+    /**
+     * Constructs a new {@link AbstractDeck}.
+     * 
+     * @param name
+     *          the name of the deck
+     */
     AbstractDeck(String name)
     {
         this(name, null);
@@ -26,6 +32,7 @@ public abstract class AbstractDeck<T extends AbstractCard>
     
     /**
      * Constructs a new {@link AbstractDeck}.
+     * 
      * @param name
      *          the name of the deck
      * @param cards

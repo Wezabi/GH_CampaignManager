@@ -1,11 +1,22 @@
 package com.gloomhaven.components.deck;
 
+import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNonPositive;
+import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNull;
+
 import java.util.List;
 
 import com.gloomhaven.components.monster.MonsterAction;
-import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNull;
-import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNonPositive;
 
+/**
+ * <p>
+ * A {@link MonsterActionCard} class.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public class MonsterActionCard implements AbstractCard
 {
     private boolean isShuffle = false;
@@ -24,7 +35,8 @@ public class MonsterActionCard implements AbstractCard
         return initiative;
     }
     
-    public boolean isShuffle()
+    @Override
+	public boolean isShuffle()
     {
         return isShuffle;
     }

@@ -2,11 +2,10 @@ package com.gloomhaven.components.deck;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * <p>
- * A monster action card deck class.
+ * A {@link MonsterActionCardDeck} class.
  * </p>
  * <p>
  * Copyright &copy 2018
@@ -20,6 +19,7 @@ public class MonsterActionCardDeck extends AbstractDeck<MonsterActionCard>
     
     /**
      * Constructs a new {@link MonsterActionCardDeck}.
+     * 
      * @param name
      *          the name of the deck's monster
      * @param cards
@@ -31,6 +31,8 @@ public class MonsterActionCardDeck extends AbstractDeck<MonsterActionCard>
     }
 
     /**
+     * Returns the active card.
+     * 
      * @return the active card
      */
     public MonsterActionCard getActiveCard()

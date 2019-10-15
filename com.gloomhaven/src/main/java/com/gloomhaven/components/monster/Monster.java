@@ -1,13 +1,9 @@
 package com.gloomhaven.components.monster;
 
-import java.util.Hashtable;
 import java.util.List;
 
 import com.gloomhaven.components.deck.AttackModifierCardDeck;
-import com.gloomhaven.components.deck.MonsterActionCard;
-import com.gloomhaven.components.deck.MonsterActionCardDeck;
-import com.gloomhaven.components.deck.MonsterAttackModifierDeck;
-import com.gloomhaven.components.monster.decks.MonsterActionCardBanditGuardDeck;
+import com.gloomhaven.components.deck.MonsterAttackModifierCardDeck;
 import com.gloomhaven.components.monster.stats.Stats;
 import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
@@ -24,15 +20,29 @@ import com.gloomhaven.constants.Status;
  */
 public abstract class Monster
 {
-	private int ID; //$NON-NLS-1$
-	private String name; //$NON-NLS-1$
+	private int ID; 
+	private String name; 
 	private Stats stats;
     private int currentHealth = 0;
     private boolean isElite = false;
     private List<Status> statuses = null; 
     private AttackModifierCardDeck monsterAttackModifierDeck; 
-    
-    public Monster(Stats stats, String name, boolean isElite, int ID, AttackModifierCardDeck monsterAttackModifierDeck)
+
+    /**
+     * Constructs a new {@link Monster}.
+     * 
+     * @param stats
+     *			the monster's stats
+     * @param name
+     *			the monster's name
+     * @param isElite
+     *			{@code true} if the monster is elite, otherwise {@code false}
+     * @param ID
+     * 			the monster's ID
+     * @param monsterAttackModifierDeck
+     *          the monster attack modifier deck
+     */ 
+    public Monster(Stats stats, String name, boolean isElite, int ID, MonsterAttackModifierCardDeck monsterAttackModifierDeck)
     {
     	this.name = name;
     	this.ID = ID;
@@ -43,6 +53,8 @@ public abstract class Monster
     }
     
     /**
+     * Returns the monster ID.
+     * 
      * @return the monster ID
      */
     public final int getID()
@@ -51,6 +63,8 @@ public abstract class Monster
     }
     
     /**
+     * Returns the monster name.
+     * 
      * @return the monster name
      */
     public final String getName()
@@ -67,7 +81,7 @@ public abstract class Monster
     }
     
 	/**
-     * Decreases the monster health by {@code damage}.
+     * Decreases the monster health by {@code damage}. 
      */
     public boolean takeDamage(int damage)
     {

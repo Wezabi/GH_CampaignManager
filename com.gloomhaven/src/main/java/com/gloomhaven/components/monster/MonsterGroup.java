@@ -5,12 +5,18 @@ import java.util.List;
 
 import com.gloomhaven.components.deck.MonsterActionCard;
 import com.gloomhaven.components.deck.MonsterActionCardDeck;
-import com.gloomhaven.components.deck.MonsterAttackModifierDeck;
-import com.gloomhaven.components.monster.decks.MonsterActionCardBanditGuardDeck;
-import com.gloomhaven.components.monster.stats.Stats;
-import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
 
+/**
+ * <p>
+ * An abstract Monster Group class.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public abstract class MonsterGroup<T extends Monster> {
 
    /**
@@ -28,25 +34,45 @@ public abstract class MonsterGroup<T extends Monster> {
     */
    private String name; //$NON-NLS-1$
    
-   private MonsterActionCardDeck actionCardDeck;
+   private MonsterActionCardDeck monsterActionCardDeck;
 
    private Monster[] monsters;
    private int spawnMax;
    protected MonsterActionCard activeMonsterActionCard;
    private int spawnCurrent;
    
-   public MonsterGroup(int spawnMax, String name, Hashtable<String, String> hashTable, int scenarioNumber, int scenarioLevel, int playerCount, MonsterActionCardDeck actionCardDeck)
+   /**
+    * Constructs a new {@link MonsterGroup}.
+    * 
+    * @param spawnMax
+    * 			the maximum monsters spawnable
+    * @param name
+    *			the monster's name
+    * @param hashTable
+    *			used to determine initial monster spawns
+    * @param scenarioNumber
+    * 			the scenario number
+    * @param scenarioLevel
+    *			the scenario level
+    * @param playerCount
+    *			the number of players
+    * @param monsterActionCardDeck
+    *           the action card deck
+    */ 
+    public MonsterGroup(int spawnMax, String name, Hashtable<String, String> hashTable, int scenarioNumber, int scenarioLevel, int playerCount, MonsterActionCardDeck monsterActionCardDeck)
    {
        this.spawnMax = spawnMax;
        this.name = name;
        this.level = scenarioLevel;
        this.monsters = new Monster[spawnMax];
-       this.actionCardDeck = actionCardDeck;
+       this.monsterActionCardDeck = monsterActionCardDeck;
        decodeTableSpawns(calcTableSpawns(hashTable, scenarioNumber, playerCount));
    }
    
    /**
-    * @return innate effects
+    * Returns the innate effects.
+    * 
+    * @return the innate effects
     */
    public final List<Status> getInnateEffects()
    {
@@ -54,6 +80,8 @@ public abstract class MonsterGroup<T extends Monster> {
    }
    
    /**
+    * Returns the monster name.
+    * 
     * @return the monster name
     */
    public final String getName()
@@ -62,6 +90,8 @@ public abstract class MonsterGroup<T extends Monster> {
    }
    
    /**
+    * Returns the active monster action card.
+    * 
     * @return the active monster action card
     */
    public final MonsterActionCard getActiveMonsterActionCard()
@@ -161,7 +191,7 @@ public abstract class MonsterGroup<T extends Monster> {
    
    public void draw()
    {
-	   activeMonsterActionCard = actionCardDeck.draw();
+	   activeMonsterActionCard = monsterActionCardDeck.draw();
    }
    
    public abstract void createMonster(int level, boolean isElite, int id);

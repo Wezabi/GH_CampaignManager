@@ -6,9 +6,10 @@ import java.util.List;
 import com.gloomhaven.components.deck.AttackModifierCard;
 import com.gloomhaven.components.deck.MonsterActionCard;
 import com.gloomhaven.components.monster.MonsterAction;
+
 /**
  * <p>
- * A compilation of default Decks.
+ * A compilation of common {@link DefaultDecks}.
  * </p>
  * <p>
  * Copyright &copy 2018
@@ -16,7 +17,6 @@ import com.gloomhaven.components.monster.MonsterAction;
  *
  * @author Wes Huhman
  */
-@SuppressWarnings("javadoc")
 public final class DefaultDecks
 {
     public static final List<AttackModifierCard> DEFAULT_ATTACK_MOD_CARD_DECK = Arrays.asList(

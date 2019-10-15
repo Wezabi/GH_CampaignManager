@@ -6,6 +6,16 @@ import java.util.List;
 
 import com.gloomhaven.constants.Status;
 
+/**
+ * <p>
+ * The stats for a {@code BanditGuard}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public class BanditGuardStats implements MonsterStats{
 
 	public Stats calculateBaseStats(int level, boolean isElite) 

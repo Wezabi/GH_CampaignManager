@@ -1,12 +1,21 @@
 package com.gloomhaven.components.deck;
 
+import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNull;
+
 import com.gloomhaven.constants.Element;
 import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
 
-import static com.gloomhaven.utilities.ArgumentChecker.rejectIfNull;
-
-@SuppressWarnings("javadoc")
+/**
+ * <p>
+ * A builder pattern for a {@link AttackModifierCard} class.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public class AttackModifierCard implements AbstractCard
 {
     private boolean isRemoved = false;
@@ -41,7 +50,8 @@ public class AttackModifierCard implements AbstractCard
         return status;
     }
     
-    public boolean isShuffle()
+    @Override
+	public boolean isShuffle()
     {
         return isShuffle;
     }

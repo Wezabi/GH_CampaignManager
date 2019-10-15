@@ -1,5 +1,15 @@
 package com.gloomhaven.constants;
 
+/**
+ * <p>
+ * An enumerator for defining a {@code Element}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public enum Element
 {
     NONE (0, "None"),
