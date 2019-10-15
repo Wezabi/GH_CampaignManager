@@ -4,6 +4,16 @@ import java.util.List;
 
 import com.gloomhaven.constants.Status;
 
+/**
+ * <p>
+ * A builder pattern to construct {@link Stats}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public class Stats {
 
 	private int baseAttack = 0;

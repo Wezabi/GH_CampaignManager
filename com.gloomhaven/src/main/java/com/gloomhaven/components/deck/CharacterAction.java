@@ -1,8 +1,6 @@
 package com.gloomhaven.components.deck;
 
-import com.gloomhaven.components.deck.AttackModifierCard.Builder;
 import com.gloomhaven.constants.Element;
-import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
 
 public class CharacterAction
@@ -12,30 +10,6 @@ public class CharacterAction
     {
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     public static class Builder
     {
@@ -49,7 +23,7 @@ public class CharacterAction
         private Element consumeElement;
         private String text;
         
-        public Builder() {};
+        public Builder() {}
         
         public Builder createElement(Element createElement)
         {

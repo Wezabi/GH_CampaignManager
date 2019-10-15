@@ -5,6 +5,16 @@ import com.gloomhaven.constants.Modifier;
 import com.gloomhaven.constants.Status;
 import com.gloomhaven.constants.Target;
 
+/**
+ * <p>
+ * A builder pattern for a {@link MonsterAction}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public class MonsterAction {
 	
 	private boolean isJump = false;

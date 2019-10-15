@@ -2,12 +2,13 @@ package com.gloomhaven.components.deck;
 
 import java.util.Collections;
 import java.util.List;
+
 /**
  * <p>
- * TODO
+ * An {@link AttackModifierCardDeck} class.
  * </p>
  * <p>
- * Copyright &copy 2018 Cerner Corporation
+ * Copyright &copy 2018
  * </p>
  *
  * @author Wes Huhman
@@ -35,7 +36,8 @@ public class AttackModifierCardDeck extends AbstractDeck<AttackModifierCard>
         return activeDeck.size();
     }
     
-    public AttackModifierCard draw()
+    @Override
+	public AttackModifierCard draw()
     {
         AttackModifierCard drawn = activeDeck.pop();
         discardDeck.push(drawn);
@@ -47,7 +49,8 @@ public class AttackModifierCardDeck extends AbstractDeck<AttackModifierCard>
         return drawn;
     }
 
-    public void shuffle()
+    @Override
+	public void shuffle()
     {
     	System.out.println(deckName + " is being shuffled."); 
     	Collections.shuffle(activeDeck);

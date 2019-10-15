@@ -2,6 +2,16 @@ package com.gloomhaven.constants;
 
 import java.util.Hashtable;
 
+/**
+ * <p>
+ * A compilation of initial {@link Monster} spawns.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public final class MonsterInitalization
 {
     public static final Hashtable<String, String> MONSTER_INITILIZATION_BANDIT_GUARD_HASH_TABLE = new Hashtable<String, String>()

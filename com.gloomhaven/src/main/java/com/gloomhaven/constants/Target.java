@@ -1,5 +1,15 @@
 package com.gloomhaven.constants;
 
+/**
+ * <p>
+ * An enumerator for defining a {@code Target}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public enum Target
 {
     SINGLE_MELEE (1,1),

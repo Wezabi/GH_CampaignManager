@@ -1,7 +1,6 @@
 package com.gloomhaven.components.mock;
 
 import static com.gloomhaven.constants.DefaultDecks.MOCK_MONSTER_ACTION_CARD_DECK;
-import static com.gloomhaven.constants.MonsterInitalization.MONSTER_INITILIZATION_BANDIT_GUARD_HASH_TABLE;
 
 import com.gloomhaven.components.deck.MonsterActionCardDeck;
 

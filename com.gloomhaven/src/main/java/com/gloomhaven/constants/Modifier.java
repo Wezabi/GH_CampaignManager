@@ -1,5 +1,15 @@
 package com.gloomhaven.constants;
 
+/**
+ * <p>
+ * An enumerator for defining a {@code Modifier}.
+ * </p>
+ * <p>
+ * Copyright &copy 2018
+ * </p>
+ *
+ * @author Wes Huhman
+ */
 public enum Modifier
 {
     MIN_2 (-2, "subtracts two"),
