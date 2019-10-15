@@ -1,6 +1,6 @@
 package com.gloomhaven.components.deck;
 
-import static com.gloomhaven.constants.DefaultDecks.DEFAULT_ATTACK_MOD_CARD_DECK;
+import java.util.List;
 
 /**
  * <p>
@@ -12,23 +12,10 @@ import static com.gloomhaven.constants.DefaultDecks.DEFAULT_ATTACK_MOD_CARD_DECK
  *
  * @author Wes Huhman
  */
-public class MonsterAttackModifierCardDeck extends AttackModifierCardDeck
+public abstract class MonsterAttackModifierCardDeck extends AttackModifierCardDeck
 {
-    private static final MonsterAttackModifierCardDeck INSTANCE = new MonsterAttackModifierCardDeck();
-    
-    private MonsterAttackModifierCardDeck()
+    protected MonsterAttackModifierCardDeck(String name, List<AttackModifierCard> cards)
     {
-        super("monster attack modifier deck", DEFAULT_ATTACK_MOD_CARD_DECK); //$NON-NLS-1$
+        super(name, cards); 
     }
-    
-    /**
-     * Returns the singleton instance of the {@link MonsterAttackModifierCardDeck}.
-     * 
-     * @return the singleton instance of the {@link MonsterAttackModifierCardDeck}
-     */
-    public static MonsterAttackModifierCardDeck getInstance()
-    {
-        return INSTANCE;
-    }
-
 }
