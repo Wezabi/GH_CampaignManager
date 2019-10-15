@@ -1,8 +1,8 @@
 package com.gloomhaven.components.deck;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,16 +19,17 @@ public class MonsterActionCardDeckTest {
 	@Test
 	public void testMonsterActionCardDeck()
 	{
-		assertEquals(new MonsterActionCardDeck(DECK_NAME, null).getName(), DECK_NAME);
+		assertEquals(DECK_NAME, new MonsterActionCardDeck(DECK_NAME, null).getName());
 	}
 	
 	@Test
 	public void testGetActiveCard()
 	{
-		List<MonsterActionCard> monsterActionCards = Arrays.asList(createActionlessMonsterActionCard(INITIATIVE));
+		MonsterActionCard monsterActionCard = createActionlessMonsterActionCard(INITIATIVE);
+		List<MonsterActionCard> monsterActionCards = Arrays.asList(monsterActionCard);
 		MonsterActionCardDeck monsterActionCardDeck = new MonsterActionCardDeck(DECK_NAME, monsterActionCards);
-
-		assertEquals(monsterActionCardDeck.getActiveCard(), monsterActionCards);
+		monsterActionCardDeck.draw();
+		assertSame(monsterActionCard, monsterActionCardDeck.getActiveCard());
 	}
 	
 	@Test
@@ -38,7 +39,7 @@ public class MonsterActionCardDeckTest {
 		List<MonsterActionCard> monsterActionCards = Arrays.asList(actualMonsterActionCard);
 		MonsterActionCardDeck monsterActionCardDeck = new MonsterActionCardDeck(DECK_NAME, monsterActionCards);
 		
-		assertSame(monsterActionCardDeck.draw(), actualMonsterActionCard);
+		assertSame(actualMonsterActionCard, monsterActionCardDeck.draw());
 	}
 	
 	@Test

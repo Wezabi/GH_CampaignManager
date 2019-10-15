@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.gloomhaven.components.mock.MockMonster;
 import com.gloomhaven.constants.Modifier;
 
 public class MonsterTest {
