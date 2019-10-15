@@ -1,4 +1,4 @@
-package com.gloomhaven.components.mock;
+package com.gloomhaven.components.deck;
 
 import static com.gloomhaven.constants.DefaultDecks.MOCK_MONSTER_ACTION_CARD_DECK;
 

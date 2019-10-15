@@ -15,7 +15,7 @@ import com.gloomhaven.components.character.Scoundrel;
 import com.gloomhaven.components.character.Spellweaver;
 import com.gloomhaven.components.character.Tinkerer;
 import com.gloomhaven.components.deck.AttackModifierCard;
-import com.gloomhaven.components.deck.MonsterAttackModifierCardDeck;
+import com.gloomhaven.components.deck.DefaultMonsterAttackModifierCardDeck;
 
 @SuppressWarnings("nls")
 public class Main 
@@ -31,7 +31,7 @@ public class Main
         campaignManager.runCampaignManagerMenu();
         
         
-        MonsterAttackModifierCardDeck deckMonster = MonsterAttackModifierCardDeck.getInstance();
+        DefaultMonsterAttackModifierCardDeck deckMonster = DefaultMonsterAttackModifierCardDeck.getInstance();
         AttackModifierCard attackModifierCard;
         
         for(int i = 0; i < 100; i++)

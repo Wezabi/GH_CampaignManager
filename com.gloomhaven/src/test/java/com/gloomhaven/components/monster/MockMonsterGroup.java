@@ -1,5 +1,6 @@
-package com.gloomhaven.components.mock;
+package com.gloomhaven.components.monster;
 
+import com.gloomhaven.components.deck.MockMonsterActionCardDeck;
 import com.gloomhaven.components.monster.MonsterGroup;
 import static com.gloomhaven.constants.MonsterInitalization.MOCK_MONSTER_INITILIZATION_BANDIT_GUARD_HASH_TABLE;
 

@@ -1,6 +1,6 @@
 package com.gloomhaven.components.monster;
 
-import com.gloomhaven.components.deck.MonsterAttackModifierCardDeck;
+import com.gloomhaven.components.deck.DefaultMonsterAttackModifierCardDeck;
 import com.gloomhaven.components.monster.stats.BanditGuardStats;
 
 /**
@@ -25,6 +25,6 @@ public class BanditGuard extends Monster
      */ 
     public BanditGuard(int level, boolean isElite, int id)
     {
-    	super(new BanditGuardStats().calculateBaseStats(level, isElite), "Bandit Guard", isElite, id, MonsterAttackModifierCardDeck.getInstance());
+    	super(new BanditGuardStats().calculateBaseStats(level, isElite), "Bandit Guard", isElite, id, DefaultMonsterAttackModifierCardDeck.getInstance());
     }
 }
